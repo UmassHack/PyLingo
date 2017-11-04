@@ -6,15 +6,29 @@ app.secret_key = "super secret key"
 
 @app.route("/")
 def main():
+    return render_template("index.html")
+
+@app.route("/language/<language>")
+def doTranslation(language):
     translator = Translator()
     file = open("chat.txt", "r")
-    line = file.readline();
+    line = file.readline()
+    finalString = ""
+    language = language.lower()
     while line:
-        flash(translator.translate(line, dest='fr').text)
-        # time.sleep(5);
+        if language == "french":
+            finalString += translator.translate(line, dest='fr').text
+        elif language == "spanish":
+            finalString += translator.translate(line, dest='es').text
+        elif language == "english":
+            finalString += translator.translate(line, dest='en').text
         line = file.readline()
-    file.close();
-    return render_template("index.html")
+    file.close()
+    return finalString
+
+@app.route("/blah/<data>")
+def blah(data):
+    return data
 
 @app.route("/profile")
 def profile():
