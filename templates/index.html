@@ -17,6 +17,7 @@
       </div>
       <div class="dropdownDiv">
         <div class="dropdown">
+          <button id = "start" class = "btn btn-primary">Start Conversation</button>
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
@@ -29,13 +30,7 @@
     </div>
     <div class="chatbox">
       <div class="chatText">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            <div> {{ message }} <br></div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
+        <!-- <div> {{text}} </div> -->
       </div>
     </div>
   </body>
